@@ -54,7 +54,8 @@ resource "aws_security_group" "mtc_sg" {
     from_port   = 0
     protocol    = "-1"
     to_port     = 0
-    cidr_blocks = ["94.66.221.170/32"]
+#   Add your public IP.
+    cidr_blocks = ["Your public IP"]
   }
 
   egress {
@@ -66,6 +67,7 @@ resource "aws_security_group" "mtc_sg" {
 }
 
 resource "aws_key_pair" "mtc_auth" {
+# Create SSH Key with ssh-keygen command and save it under ~/.ssh/ directory
   public_key = file("~/.ssh/mtckey.pub")
   key_name   = "mtckey"
 }
@@ -93,4 +95,3 @@ resource "aws_instance" "dev_node" {
 
   }
 
-aaaaaa
